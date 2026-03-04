@@ -8,10 +8,6 @@ using namespace std;
 
 // Task 1
 double* f1_create_array(size_t size) {
-	if (size <= 0) {
-		return nullptr;
-	}
-
 	double* arr = new double[size];
 
 	random_device rd;
@@ -67,10 +63,6 @@ void f1_reverse_print(double* arr, size_t size) {
 
 // Task 2
 double** f2_create_array(size_t rows, size_t cols) {
-	if (rows <= 0 || cols <= 0) {
-		return nullptr;
-	}
-
 	double** arr = new double*[cols];
 
 	random_device rd;
@@ -120,10 +112,6 @@ int f2_has_column_with_equal_positive_negative(double** arr, size_t rows, size_t
 
 // O(n log n)
 void f3_merge_sort(double* arr, size_t size) {
-	if (size <= 1) {
-		return;
-	}
-
 	double* temp = new double[size];
 
 	for (size_t width = 1; width < size; width *= 2) {
