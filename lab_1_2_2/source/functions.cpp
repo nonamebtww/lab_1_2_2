@@ -1,5 +1,5 @@
 #include <iostream>
-#include <random>
+#include <iomanip>
 
 #define MIN_DOUBLE -1000.0
 #define MAX_DOUBLE 1000.0
@@ -10,22 +10,20 @@ using namespace std;
 double* f1_create_array(size_t size) {
 	double* arr = new double[size];
 
-	random_device rd;
-	mt19937 gen(rd());
-	uniform_real_distribution<> dist(MIN_DOUBLE, MAX_DOUBLE);
+	srand(time(NULL));
 
 	for (size_t i = 0; i < size; ++i) {
-		arr[i] = dist(gen);
+		arr[i] = (double)rand() / RAND_MAX * (MAX_DOUBLE - MIN_DOUBLE) + MIN_DOUBLE;
 	}
 
 	return arr;
 }
 
 double f1_find_min(double* arr, size_t size) {
-	double min = arr[0];
+	double min = MAX_DOUBLE;
 
 	for (size_t i = 1; i < size; ++i) {
-		if (arr[i] < min) {
+		if (arr[i] < min && arr[i] > 0) {
 			min = arr[i];
 		}
 	}
@@ -55,7 +53,7 @@ void f1_reverse_print(double* arr, size_t size) {
 			continue;
 		}
 
-		cout << arr[i - 1] << " ";
+		cout << fixed << setprecision(4) << arr[i - 1] << " ";
 	}
 
 	cout << endl;
@@ -65,15 +63,13 @@ void f1_reverse_print(double* arr, size_t size) {
 double** f2_create_array(size_t rows, size_t cols) {
 	double** arr = new double*[cols];
 
-	random_device rd;
-	mt19937 gen(rd());
-	uniform_real_distribution<> dist(MIN_DOUBLE, MAX_DOUBLE);
+	srand(time(NULL));
 
 	for (size_t i = 0; i < cols; ++i) {
 		arr[i] = new double[rows];
 
 		for (size_t j = 0; j < rows; ++j) {
-			arr[i][j] = dist(gen);
+			arr[i][j] = (double)rand() / RAND_MAX * (MAX_DOUBLE - MIN_DOUBLE) + MIN_DOUBLE;
 		}
 	}
 
